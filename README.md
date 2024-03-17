@@ -7,6 +7,7 @@ pip install langchain
 pip install openai
 pip install -U langchain-community
 pip install -U langchain-openai
+pip install -U slack_bolt
 ```
 
 ### create OpenAI API key
@@ -22,5 +23,11 @@ that will generate flows.db locally then copy to ai repo or create symlink
 
 ### How to run
 ```python
-python3 chat-netobserv.py
+python3 chat_netobserv.py
+```
+
+### How to run after setting up slack
+Note: need to add set slack environment variables in `slack_key.py`
+```python
+python3 netobserv_slack.py
 ```
