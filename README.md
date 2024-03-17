@@ -19,3 +19,8 @@ then add it to `secret_key.py`
 - `make build`
 - then run `./build/oc-netobserv-flows-db`
 that will generate flows.db locally then copy to ai repo or create symlink
+
+### How to run
+```python
+python3 chat-netobserv.py
+```
