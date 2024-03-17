@@ -27,7 +27,8 @@ def message_handler(message, say, logger):
     else:
         output = agent(message['text'])
 
-    say(output)
+    for flow in output:
+        say(flow)
 
 
 
