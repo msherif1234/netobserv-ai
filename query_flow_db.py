@@ -20,7 +20,6 @@ def query_flows_with_drop(input=""):
     conn.close()
     return rows
 
-
 def query_flows_without_drop(input=""):
     # Connect to the SQLite database
     conn = sqlite3.connect('flows.db')  # Replace 'example.db' with the path to your SQLite database file

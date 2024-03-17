@@ -38,9 +38,10 @@ def Netobserv_ai_setup():
         func=query_flow_db.query_flows_with_slow_rtt,
         description="Useful for when you need to answer a question about a flow with slow rtt",
     )
-    tools = [   query_flows_with_drops_tool,
-                query_flows_with_no_drops_tool,
-                query_flows_with_slow_rtt_tool,
+    tools = [
+            query_flows_with_drops_tool,
+            query_flows_with_no_drops_tool,
+            query_flows_with_slow_rtt_tool,
             ]
     # conversational agent memory
     memory = ConversationBufferWindowMemory(
@@ -54,9 +55,10 @@ def Netobserv_ai_setup():
         agent='chat-conversational-react-description',
         tools=tools,
         llm=turbo_llm,
-        verbose=True,
+        verbose=False,
         max_iterations=3,
         early_stopping_method='generate',
+        handle_parsing_errors=True,
         memory=memory
     )
     conversational_agent.agent.llm_chain.prompt.messages[0].prompt.template = fixed_prompt
@@ -74,7 +76,7 @@ def netobserv_flows_selector(filter_selector):
 
 if __name__ == '__main__':
     agent = Netobserv_ai_setup()
-    #agent("show me all flows with drop")
-    #agent("show me all flows with no drop")
-    agent("show me all flows with slow rtt")
+    #agent.run("show me all flows with drop")
+    #agent.run("show me all flows with no drop")
+    agent.run("show me all flows with slow rtt")
 

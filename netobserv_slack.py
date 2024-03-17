@@ -11,24 +11,35 @@ os.environ['SLACK_APP_TOKEN'] = slack_key.app_token
 os.environ['SLACK_BOT_TOKEN'] = slack_key.bot_token
 app = App(token=os.environ["SLACK_BOT_TOKEN"])
 
+def help(message, say, logger):
+    say("I'm a bot that can help you troubleshoot OpenShift cluster networking issues. I can help you find flows with drop, flows with no drop and flows with slow rtt.")
+    say("examples of questions I can answer:")
+    say("show me all flows with no drop")
+    say("show me all flows with drop")
+    say("show me all flows with slow rtt")
+
+
 #Message handler for Slack
 @app.message(".*")
 def message_handler(message, say, logger):
     print(message)
 
+    if message['text'] == "help":
+        help(message, say, logger)
+        return
+
     agent = Netobserv_ai_setup()
 
     if "nodrop" in message['text']:
-        output = agent("show me all flows with no drop")
+        output = agent.run("show me all flows with no drop")
     elif "drop" in message['text']:
-        output = agent("show me all flows with drop")
+        output = agent.run("show me all flows with drop")
     elif "slow rtt" in message['text']:
-        output = agent("show me all flows with slow rtt")
+        output = agent.run("show me all flows with slow rtt")
     else:
         output = agent(message['text'])
 
-    for flow in output:
-        say(flow)
+    say(output)
 
 
 
