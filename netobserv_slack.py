@@ -14,10 +14,10 @@ app = App(token=os.environ["SLACK_BOT_TOKEN"])
 def help(message, say, logger):
     say("I'm a bot that can help you troubleshoot OpenShift cluster networking issues. I can help you find flows with drop, flows with no drop and flows with slow rtt.")
     say("examples of questions I can answer:")
-    say("show me all flows with no drop")
-    say("show me all flows with drop")
-    say("show me all flows with slow rtt")
-    say("show me all flows with slow dns queries")
+    say("`show me all flows with no drop`")
+    say("`show me all flows with drop`")
+    say("`show me all flows with slow rtt`")
+    say("`show me all flows with slow dns queries`")
 
 
 #Message handler for Slack
