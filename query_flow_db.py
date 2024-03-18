@@ -85,17 +85,13 @@ def query_flows_with_slow_dns(input=""):
     conn.close()
     return table
 
-def print_flows(rows):
-    for row in rows:
-        print(row)
-
 
 if __name__ == '__main__':
     print("Netobserv flows with drops")
-    print_flows(query_flows_with_drop())
+    print(query_flows_with_drop())
     print("Netobserv flows without drops")
-    print_flows(query_flows_without_drop())
+    print(query_flows_without_drop())
     print("Netobserv flows with slow RTT")
-    print_flows(query_flows_with_slow_rtt())
+    print(query_flows_with_slow_rtt())
     print("Netobserv flows with slow DNS")
-    print_flows(query_flows_with_slow_dns())
+    print(query_flows_with_slow_dns())
