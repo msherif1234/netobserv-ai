@@ -14,7 +14,7 @@ filters = ["drop", "no drop", "slow rtt", "slow dns"]
 
 fixed_prompt = '''Assistant is a large language model trained by OpenAI.
 Assistant is designed to be able to assist with a wide range of tasks, from answering simple questions to providing in-depth explanations and discussions on a wide range of topics. As a language model, Assistant is able to generate human-like text based on the input it receives, allowing it to engage in natural-sounding conversations and provide responses that are coherent and relevant to the topic at hand.
-Assistant doesn't know anything about flows with or without drops or flows with slow rtt and should use a tool for questions about these topics.
+Assistant doesn't know anything about flows with drops or with no drops or flows with slow rtt or slow dns queries and should use a tool for questions about these topics.
 Assistant is constantly learning and improving, and its capabilities are constantly evolving. It is able to process and understand large amounts of text, and can use this knowledge to provide accurate and informative responses to a wide range of questions. Additionally, Assistant is able to generate its own text based on the input it receives, allowing it to engage in discussions and provide explanations and descriptions on a wide range of topics.
 Overall, Assistant is a powerful system that can help with a wide range of tasks and provide valuable insights and information on a wide range of topics. Whether you need help with a specific question or just want to have a conversation about a particular topic, Assistant is here to assist.'''
 
@@ -71,20 +71,10 @@ def Netobserv_ai_setup():
     return conversational_agent
 
 
-def netobserv_flows_selector(filter_selector):
-    switcher = {
-        "drop": query_flow_db.query_flows_with_drop(),
-        "no drop": query_flow_db.query_flows_without_drop(),
-        "slow rtt": query_flow_db.query_flows_with_slow_rtt(),
-        "slow dns": query_flow_db.query_flows_with_slow_dns()
-    }
-    return switcher[filter_selector]
-
-
 if __name__ == '__main__':
     agent = Netobserv_ai_setup()
-    agent.invoke("show me all flows with drop")
-    #agent.invoke("show me all flows with no drop")
-    agent.invoke("show me all flows with slow rtt")
-    agent.invoke("show me all flows with slow dns")
+    agent.run("show me flows with drop")
+    # agent.run("show me flows with no drop")
+    agent.run("show me flows with slow rtt")
+    agent.run("show me flows with slow dns")
 

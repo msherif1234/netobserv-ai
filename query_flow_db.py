@@ -12,7 +12,7 @@ def query_flows_with_drop(input=""):
     # Create a cursor object to execute SQL queries
     cursor = conn.cursor()
     cursor.execute(
-        "SELECT PktDropLatestDropCause, DstAddr, DstPort, Interface, Proto, SrcAddr, SrcPort, Bytes, Packets, PktDropBytes, PktDropPackets FROM flow WHERE PktDropLatestDropCause != 0"
+        "SELECT PktDropLatestDropCause, DstAddr, DstPort, Interface, Proto, SrcAddr, SrcPort, Bytes, Packets, PktDropBytes, PktDropPackets FROM flow WHERE PktDropLatestDropCause >  0 LIMIT 10"
     )
 
     # Fetch the results
@@ -24,6 +24,7 @@ def query_flows_with_drop(input=""):
     # Close the cursor and connection
     cursor.close()
     conn.close()
+    print(table)
     return table
 
 def query_flows_without_drop(input=""):
@@ -32,7 +33,7 @@ def query_flows_without_drop(input=""):
     # Create a cursor object to execute SQL queries
     cursor = conn.cursor()
     # Execute a SELECT query
-    cursor.execute("SELECT DstAddr, DstPort, Interface, Proto, SrcAddr, SrcPort, Bytes, Packets FROM flow")
+    cursor.execute("SELECT DstAddr, DstPort, Interface, Proto, SrcAddr, SrcPort, Bytes, Packets FROM flow LIMIT 10")
 
     # Fetch the results
     rows = cursor.fetchall()
@@ -43,6 +44,7 @@ def query_flows_without_drop(input=""):
     # Close the cursor and connection
     cursor.close()
     conn.close()
+    print(table)
     return table
 
 def query_flows_with_slow_rtt(input=""):
@@ -51,7 +53,7 @@ def query_flows_with_slow_rtt(input=""):
     # Create a cursor object to execute SQL queries
     cursor = conn.cursor()
     cursor.execute(
-        "SELECT TimeFlowRTTNs, DstAddr, DstPort, Interface, Proto, SrcAddr, SrcPort, Bytes, Packets FROM flow WHERE  TimeFlowRTTNs > " + str(SLOW_RTT_THRESHOULD_IN_NANOSECONDS)
+        "SELECT TimeFlowRTTNs, DstAddr, DstPort, Interface, Proto, SrcAddr, SrcPort, Bytes, Packets FROM flow WHERE  TimeFlowRTTNs > " + str(SLOW_RTT_THRESHOULD_IN_NANOSECONDS) + " LIMIT 10"
     )
 
     # Fetch the results
@@ -63,6 +65,7 @@ def query_flows_with_slow_rtt(input=""):
     # Close the cursor and connection
     cursor.close()
     conn.close()
+    print(table)
     return table
 
 def query_flows_with_slow_dns(input=""):
@@ -71,7 +74,7 @@ def query_flows_with_slow_dns(input=""):
     # Create a cursor object to execute SQL queries
     cursor = conn.cursor()
     cursor.execute(
-        "SELECT DnsLatencyMs, DnsFlagsResponseCode, DnsId, DstAddr, DstPort, Interface, Proto, SrcAddr, SrcPort, Bytes, Packets FROM flow WHERE  DnsLatencyMs > " + str(SLOW_DNS_THRESHOULD_IN_MSECONDS)
+        "SELECT DnsLatencyMs, DnsFlagsResponseCode, DnsId, DstAddr, DstPort, Interface, Proto, SrcAddr, SrcPort, Bytes, Packets FROM flow WHERE  DnsLatencyMs > " + str(SLOW_DNS_THRESHOULD_IN_MSECONDS) + " LIMIT 10"
     )
 
     # Fetch the results
@@ -83,6 +86,7 @@ def query_flows_with_slow_dns(input=""):
     # Close the cursor and connection
     cursor.close()
     conn.close()
+    print(table)
     return table
 
 
