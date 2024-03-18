@@ -37,7 +37,7 @@ def message_handler(message, say, logger):
         return
 
     agent = netobserv_ai_setup(verbose=False)
-
+    output = agent.run(message['text'])
     if QUERY_FLOWS_WITH_NO_DROP == message['text']:
         output = agent.run(QUERY_FLOWS_WITH_NO_DROP)
     if QUERY_FLOWS_WITH_DROP == message['text']:
