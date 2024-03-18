@@ -61,7 +61,7 @@ def Netobserv_ai_setup():
         agent='chat-conversational-react-description',
         tools=tools,
         llm=turbo_llm,
-        verbose=False,
+        verbose=False, # set to True for more verbose output
         max_iterations=3,
         early_stopping_method='generate',
         handle_parsing_errors=True,
@@ -83,8 +83,8 @@ def netobserv_flows_selector(filter_selector):
 
 if __name__ == '__main__':
     agent = Netobserv_ai_setup()
-    #agent.run("show me all flows with drop")
-    #agent.run("show me all flows with no drop")
-    #agent.run("show me all flows with slow rtt")
-    agent.run("show me all flows with slow dns")
+    agent.invoke("show me all flows with drop")
+    #agent.invoke("show me all flows with no drop")
+    agent.invoke("show me all flows with slow rtt")
+    agent.invoke("show me all flows with slow dns")
 

@@ -32,13 +32,13 @@ def message_handler(message, say, logger):
     agent = Netobserv_ai_setup()
 
     if "nodrop" in message['text']:
-        output = agent.run("show me all flows with no drop")
+        output = agent.invoke("show me all flows with no drop")
     elif "drop" in message['text']:
-        output = agent.run("show me all flows with drop")
+        output = agent.invoke("show me all flows with drop")
     elif "slow rtt" in message['text']:
-        output = agent.run("show me all flows with slow rtt")
+        output = agent.invoke("show me all flows with slow rtt")
     elif "slow dns" in message['text']:
-        output = agent.run("show me all flows with slow dns")
+        output = agent.invoke("show me all flows with slow dns")
     else:
         output = agent(message['text'])
 

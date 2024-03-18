@@ -3,8 +3,8 @@
 import sqlite3
 from tabulate import tabulate
 
-SLOW_RTT_THRESHOULD_IN_NANOSECONDS = 20000000
-SLOW_DNS_THRESHOULD_IN_MSECONDS = 20
+SLOW_RTT_THRESHOULD_IN_NANOSECONDS = 80000000
+SLOW_DNS_THRESHOULD_IN_MSECONDS = 2
 
 def query_flows_with_drop(input=""):
     # Connect to the SQLite database
