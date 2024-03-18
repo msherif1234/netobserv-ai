@@ -46,4 +46,5 @@ options:
   --nodrop    show flows without drop
   --slowrtt   show flows with slow rtt
   --slowdns   show flows with slow dns queries
+  --netpol    show flows with netpol drops
 ```
