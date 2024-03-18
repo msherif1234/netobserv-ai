@@ -10,7 +10,7 @@ from langchain.agents import Tool
 
 import query_flow_db
 
-filters = ["drop", "no drop", "slow rtt"]
+filters = ["drop", "no drop", "slow rtt", "slow dns"]
 
 fixed_prompt = '''Assistant is a large language model trained by OpenAI.
 Assistant is designed to be able to assist with a wide range of tasks, from answering simple questions to providing in-depth explanations and discussions on a wide range of topics. As a language model, Assistant is able to generate human-like text based on the input it receives, allowing it to engage in natural-sounding conversations and provide responses that are coherent and relevant to the topic at hand.
@@ -38,10 +38,16 @@ def Netobserv_ai_setup():
         func=query_flow_db.query_flows_with_slow_rtt,
         description="Useful for when you need to answer a question about a flow with slow rtt",
     )
+    query_flows_with_slow_dns_tool = Tool(
+        name='Find all netobserv flows with slow dns',
+        func=query_flow_db.query_flows_with_slow_dns,
+        description="Useful for when you need to answer a question about a flow with slow dns",
+    )
     tools = [
             query_flows_with_drops_tool,
             query_flows_with_no_drops_tool,
             query_flows_with_slow_rtt_tool,
+            query_flows_with_slow_dns_tool,
             ]
     # conversational agent memory
     memory = ConversationBufferWindowMemory(
@@ -70,6 +76,7 @@ def netobserv_flows_selector(filter_selector):
         "drop": query_flow_db.query_flows_with_drop(),
         "no drop": query_flow_db.query_flows_without_drop(),
         "slow rtt": query_flow_db.query_flows_with_slow_rtt(),
+        "slow dns": query_flow_db.query_flows_with_slow_dns()
     }
     return switcher[filter_selector]
 
@@ -78,5 +85,6 @@ if __name__ == '__main__':
     agent = Netobserv_ai_setup()
     #agent.run("show me all flows with drop")
     #agent.run("show me all flows with no drop")
-    agent.run("show me all flows with slow rtt")
+    #agent.run("show me all flows with slow rtt")
+    agent.run("show me all flows with slow dns")
 

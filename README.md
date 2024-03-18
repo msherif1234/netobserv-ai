@@ -8,6 +8,7 @@ pip install openai
 pip install -U langchain-community
 pip install -U langchain-openai
 pip install -U slack_bolt
+pip install -U tabulate
 ```
 
 ### create OpenAI API key

@@ -17,6 +17,7 @@ def help(message, say, logger):
     say("show me all flows with no drop")
     say("show me all flows with drop")
     say("show me all flows with slow rtt")
+    say("show me all flows with slow dns queries")
 
 
 #Message handler for Slack
@@ -36,6 +37,8 @@ def message_handler(message, say, logger):
         output = agent.run("show me all flows with drop")
     elif "slow rtt" in message['text']:
         output = agent.run("show me all flows with slow rtt")
+    elif "slow dns" in message['text']:
+        output = agent.run("show me all flows with slow dns")
     else:
         output = agent(message['text'])
 
