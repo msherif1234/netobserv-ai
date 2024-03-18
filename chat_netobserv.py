@@ -16,7 +16,7 @@ Assistant doesn't know anything about flows with drops or flows with no drops or
 Assistant is constantly learning and improving, and its capabilities are constantly evolving. It is able to process and understand large amounts of text, and can use this knowledge to provide accurate and informative responses to a wide range of questions. Additionally, Assistant is able to generate its own text based on the input it receives, allowing it to engage in discussions and provide explanations and descriptions on a wide range of topics.
 Overall, Assistant is a powerful system that can help with a wide range of tasks and provide valuable insights and information on a wide range of topics. Whether you need help with a specific question or just want to have a conversation about a particular topic, Assistant is here to assist.'''
 
-def netobserv_ai_setup():
+def netobserv_ai_setup(verbose):
     turbo_llm = ChatOpenAI(
         temperature=0, # using low temperature for more predictable results
         model_name='gpt-3.5-turbo'
@@ -66,7 +66,7 @@ def netobserv_ai_setup():
         agent='chat-conversational-react-description',
         tools=tools,
         llm=turbo_llm,
-        verbose=True, # set to True for more verbose output
+        verbose=verbose, # set to True for more verbose output
         max_iterations=3,
         early_stopping_method='generate',
         handle_parsing_errors=True,
@@ -77,7 +77,7 @@ def netobserv_ai_setup():
 
 
 if __name__ == '__main__':
-    agent = netobserv_ai_setup()
+    agent = netobserv_ai_setup(verbose=True)
     # agent.run("show me flows with drop")
     # agent.run("show me flows with no drop")
     # agent.run("show me flows with slow rtt")

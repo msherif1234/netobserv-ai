@@ -12,7 +12,7 @@ def process_netobserv_cli():
     exclusive_group.add_argument('--netpol', help='show flows with netpol drop', action='store_true')
     args = parser.parse_args()
 
-    agent = netobserv_ai_setup()
+    agent = netobserv_ai_setup(verbose=True)
 
     if args.nodrop:
         agent.invoke("show me flows with no drop")
