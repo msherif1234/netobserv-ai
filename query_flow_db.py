@@ -24,7 +24,6 @@ def query_flows_with_drop(input=""):
     # Close the cursor and connection
     cursor.close()
     conn.close()
-    print(table)
     return table
 
 def query_flows_without_drop(input=""):
@@ -44,7 +43,6 @@ def query_flows_without_drop(input=""):
     # Close the cursor and connection
     cursor.close()
     conn.close()
-    print(table)
     return table
 
 def query_flows_with_slow_rtt(input=""):
@@ -65,7 +63,6 @@ def query_flows_with_slow_rtt(input=""):
     # Close the cursor and connection
     cursor.close()
     conn.close()
-    print(table)
     return table
 
 def query_flows_with_slow_dns(input=""):
@@ -86,7 +83,6 @@ def query_flows_with_slow_dns(input=""):
     # Close the cursor and connection
     cursor.close()
     conn.close()
-    print(table)
     return table
 
 

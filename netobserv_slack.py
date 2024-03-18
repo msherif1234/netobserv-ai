@@ -5,7 +5,7 @@ import slack_key
 
 from slack_bolt import App
 from slack_bolt.adapter.socket_mode import SocketModeHandler
-from chat_netobserv import Netobserv_ai_setup
+from chat_netobserv import netobserv_ai_setup
 
 os.environ['SLACK_APP_TOKEN'] = slack_key.app_token
 os.environ['SLACK_BOT_TOKEN'] = slack_key.bot_token
@@ -34,7 +34,7 @@ def message_handler(message, say, logger):
         help(message, say, logger)
         return
 
-    agent = Netobserv_ai_setup()
+    agent = netobserv_ai_setup()
 
     if QUERY_FLOWS_WITH_NO_DROP == message['text']:
         output = agent.run("show me flows with no drop")

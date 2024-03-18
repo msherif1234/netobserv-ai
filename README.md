@@ -32,3 +32,18 @@ Note: need to add set slack environment variables in `slack_key.py`
 ```python
 python3 netobserv_slack.py
 ```
+
+### How to run with cli
+```python
+python3 netobserv_cli.py --help
+usage: netobserv_cli.py [-h] (--drop | --nodrop | --slowrtt | --slowdns)
+
+NetObserv chatbot CLI
+
+options:
+  -h, --help  show this help message and exit
+  --drop      show flows with drop
+  --nodrop    show flows without drop
+  --slowrtt   show flows with slow rtt
+  --slowdns   show flows with slow dns queries
+```
