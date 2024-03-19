@@ -29,6 +29,8 @@ python3 chat_netobserv.py
 
 ### How to run after setting up slack
 Note: need to add set slack environment variables in `slack_key.py`
+https://api.slack.com/apps/A06PUPX71S9/general?
+
 ```python
 python3 netobserv_slack.py
 ```
