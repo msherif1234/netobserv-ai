@@ -13,12 +13,6 @@ os.environ['SLACK_APP_TOKEN'] = slack_key.app_token
 os.environ['SLACK_BOT_TOKEN'] = slack_key.bot_token
 app = App(token=os.environ["SLACK_BOT_TOKEN"])
 
-QUERY_FLOWS_WITH_DROP = "show me flows with drop"
-QUERY_FLOWS_WITH_NO_DROP = "show me flows with no drop"
-QUERY_FLOWS_WITH_SLOW_RTT = "show me flows with slow rtt"
-QUERY_FLOWS_WITH_SLOW_DNS = "show me flows with slow dns queries"
-QUERY_FLOWS_WITH_NETPOL_DROP = "show me flows with netpol drop"
-
 def help(message, say, logger):
     say("I'm a bot that can help you troubleshoot OpenShift cluster networking issues. I can help you find flows with drop, flows with no drop and flows with slow rtt.")
     say("examples of questions I can answer:")
@@ -43,16 +37,6 @@ def message_handler(message, say, logger):
     # set_verbose(True)
 
     output = agent.invoke({"input": message['text']})
-    if QUERY_FLOWS_WITH_NO_DROP == message['text']:
-        output = agent.invoke({"input": QUERY_FLOWS_WITH_NO_DROP})
-    if QUERY_FLOWS_WITH_DROP == message['text']:
-        output = agent.invoke({"input": QUERY_FLOWS_WITH_DROP})
-    if QUERY_FLOWS_WITH_SLOW_RTT == message['text']:
-        output = agent.invoke({"input": QUERY_FLOWS_WITH_SLOW_RTT})
-    if QUERY_FLOWS_WITH_SLOW_DNS == message['text']:
-        output = agent.invoke({"input": QUERY_FLOWS_WITH_SLOW_DNS})
-    if QUERY_FLOWS_WITH_NETPOL_DROP == message['text']:
-        output = agent.invoke({"input": QUERY_FLOWS_WITH_NETPOL_DROP})
 
     say(output['output'])
 
