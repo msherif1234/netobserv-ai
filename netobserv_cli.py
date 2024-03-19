@@ -1,6 +1,11 @@
 import argparse
 from chat_netobserv import netobserv_ai_setup
 
+QUERY_FLOWS_WITH_DROP = "show me flows with drop"
+QUERY_FLOWS_WITH_NO_DROP = "show me flows with no drop"
+QUERY_FLOWS_WITH_SLOW_RTT = "show me flows with slow rtt"
+QUERY_FLOWS_WITH_SLOW_DNS = "show me flows with slow dns queries"
+QUERY_FLOWS_WITH_NETPOL_DROP = "show me flows with netpol drop"
 
 def process_netobserv_cli():
     parser = argparse.ArgumentParser(description='NetObserv chatbot CLI')
@@ -15,15 +20,15 @@ def process_netobserv_cli():
     agent = netobserv_ai_setup(verbose=True)
 
     if args.nodrop:
-        agent.invoke("show me flows with no drop")
+        agent.invoke({"input": QUERY_FLOWS_WITH_NO_DROP})
     if args.drop:
-        agent.invoke("show me flows with drop")
+        agent.invoke({"input": QUERY_FLOWS_WITH_DROP})
     if args.slowrtt:
-        agent.invoke("show me flows with slow rtt")
+        agent.invoke({"input": QUERY_FLOWS_WITH_SLOW_RTT})
     if args.slowdns:
-        agent.invoke("show me flows with slow dns")
+        agent.invoke({"input": QUERY_FLOWS_WITH_SLOW_DNS})
     if args.netpol:
-        agent.invoke("show me flows with netpol drop")
+        agent.invoke({"input": QUERY_FLOWS_WITH_NETPOL_DROP})
 
 
 if __name__ == "__main__":

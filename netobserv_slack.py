@@ -6,6 +6,8 @@ import slack_key
 from slack_bolt import App
 from slack_bolt.adapter.socket_mode import SocketModeHandler
 from chat_netobserv import netobserv_ai_setup
+from langchain.globals import set_debug
+from langchain.globals import set_verbose
 
 os.environ['SLACK_APP_TOKEN'] = slack_key.app_token
 os.environ['SLACK_BOT_TOKEN'] = slack_key.bot_token
@@ -37,19 +39,22 @@ def message_handler(message, say, logger):
         return
 
     agent = netobserv_ai_setup(verbose=False)
-    output = agent.run(message['text'])
-    if QUERY_FLOWS_WITH_NO_DROP == message['text']:
-        output = agent.run(QUERY_FLOWS_WITH_NO_DROP)
-    if QUERY_FLOWS_WITH_DROP == message['text']:
-        output = agent.run(QUERY_FLOWS_WITH_DROP)
-    if QUERY_FLOWS_WITH_SLOW_RTT == message['text']:
-        output = agent.run(QUERY_FLOWS_WITH_SLOW_RTT)
-    if QUERY_FLOWS_WITH_SLOW_DNS == message['text']:
-        output = agent.run(QUERY_FLOWS_WITH_SLOW_DNS)
-    if QUERY_FLOWS_WITH_NETPOL_DROP == message['text']:
-        output = agent.run(QUERY_FLOWS_WITH_NETPOL_DROP)
+    # set_debug(True)
+    # set_verbose(True)
 
-    say(output)
+    output = agent.invoke({"input": message['text']})
+    if QUERY_FLOWS_WITH_NO_DROP == message['text']:
+        output = agent.invoke({"input": QUERY_FLOWS_WITH_NO_DROP})
+    if QUERY_FLOWS_WITH_DROP == message['text']:
+        output = agent.invoke({"input": QUERY_FLOWS_WITH_DROP})
+    if QUERY_FLOWS_WITH_SLOW_RTT == message['text']:
+        output = agent.invoke({"input": QUERY_FLOWS_WITH_SLOW_RTT})
+    if QUERY_FLOWS_WITH_SLOW_DNS == message['text']:
+        output = agent.invoke({"input": QUERY_FLOWS_WITH_SLOW_DNS})
+    if QUERY_FLOWS_WITH_NETPOL_DROP == message['text']:
+        output = agent.invoke({"input": QUERY_FLOWS_WITH_NETPOL_DROP})
+
+    say(output['output'])
 
 
 

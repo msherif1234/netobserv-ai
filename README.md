@@ -9,6 +9,7 @@ pip install -U langchain-community
 pip install -U langchain-openai
 pip install -U slack_bolt
 pip install -U tabulate
+pip install -U langchainhub
 ```
 
 ### create OpenAI API key
