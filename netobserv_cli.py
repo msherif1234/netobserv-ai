@@ -17,19 +17,20 @@ def process_netobserv_cli():
     exclusive_group.add_argument('--netpol', help='show flows with netpol drop', action='store_true')
     args = parser.parse_args()
 
-    agent = netobserv_ai_setup(verbose=True)
+    agent = netobserv_ai_setup(verbose=False)
 
     if args.nodrop:
-        agent.invoke({"input": QUERY_FLOWS_WITH_NO_DROP})
+        out = agent.invoke({"input": QUERY_FLOWS_WITH_NO_DROP})
     if args.drop:
-        agent.invoke({"input": QUERY_FLOWS_WITH_DROP})
+        out = agent.invoke({"input": QUERY_FLOWS_WITH_DROP})
     if args.slowrtt:
-        agent.invoke({"input": QUERY_FLOWS_WITH_SLOW_RTT})
+        out = agent.invoke({"input": QUERY_FLOWS_WITH_SLOW_RTT})
     if args.slowdns:
-        agent.invoke({"input": QUERY_FLOWS_WITH_SLOW_DNS})
+        out = agent.invoke({"input": QUERY_FLOWS_WITH_SLOW_DNS})
     if args.netpol:
-        agent.invoke({"input": QUERY_FLOWS_WITH_NETPOL_DROP})
+        out = agent.invoke({"input": QUERY_FLOWS_WITH_NETPOL_DROP})
 
+    print(out['output'])
 
 if __name__ == "__main__":
     process_netobserv_cli()
