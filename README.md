@@ -51,3 +51,8 @@ options:
   --slowdns   show flows with slow dns queries
   --netpol    show flows with netpol drops
 ```
+
+### standalone client/serve langchain testing
+in `chat_netobserv.py`
+invoke `netobserv_ai_server(agent_executor)` then run `python3 netobserv_client.py`
+that will connect to server at `localhost:8000` and send queries to langchain agent
