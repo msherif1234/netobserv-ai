@@ -7,9 +7,7 @@
 
 ## recorded demo
 
-<video width="320" height="240" controls>
-  <source src="docs/netobserv-chatbot-demo1.webm" type="video/webm">
-</video>
+![demo](docs/netobserv-chatbot-demo1.webm)
 
 ### install the following packages
 ```shell
