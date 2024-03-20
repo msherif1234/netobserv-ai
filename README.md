@@ -1,4 +1,15 @@
 
+## Design Netobserv chatbot using `chainLang` frame work
+
+<p align="center">
+<img src="docs/netobserv-chatbot.png" alt="logo" width="25%"/>
+</p>
+
+## recorded demo
+
+<video width="320" height="240" controls>
+  <source src="docs/netobserv-chatbot-demo1.webm" type="video/webm">
+</video>
 
 ### install the following packages
 ```shell
@@ -11,6 +22,7 @@ pip install -U slack_bolt
 pip install -U tabulate
 pip install -U langchainhub
 ```
+
 
 ### create OpenAI API key
 https://platform.openai.com/api-keys
