@@ -1,8 +1,8 @@
 
-## Design Netobserv chatbot using `chainLang` frame work
+## Design Netobserv chatbot using [langchain](https://python.langchain.com/docs/get_started/introduction) frame work
 
 <p align="center">
-<img src="docs/netobserv-chatbot.png" alt="logo" width="25%"/>
+<img src="docs/netobserv-chatbot.png" alt="logo" width="75%"/>
 </p>
 
 ## recorded demo
