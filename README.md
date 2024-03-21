@@ -5,10 +5,6 @@
 <img src="docs/netobserv-chatbot.png" alt="logo" width="75%"/>
 </p>
 
-## recorded demo
-
-![demo](docs/netobserv-chatbot-demo1.webm)
-
 ### install the following packages
 ```shell
 
