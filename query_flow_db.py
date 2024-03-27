@@ -6,7 +6,7 @@ from langchain_core.tools import tool
 
 SLOW_RTT_THRESHOULD_IN_NANOSECONDS = 30000000
 SLOW_DNS_THRESHOULD_IN_MSECONDS = 20
-
+FLOWS_DB = "stable_flows.db"
 @tool()
 def query_flows_with_drop():
     """
@@ -14,7 +14,7 @@ def query_flows_with_drop():
     :return:
     """
     # Connect to the SQLite database
-    conn = sqlite3.connect('flows.db')  # Replace 'example.db' with the path to your SQLite database file
+    conn = sqlite3.connect(FLOWS_DB)  # Replace 'example.db' with the path to your SQLite database file
     # Create a cursor object to execute SQL queries
     cursor = conn.cursor()
     cursor.execute(
@@ -39,7 +39,7 @@ def query_flows_with_netpol_drop():
     :return:
     """
     # Connect to the SQLite database
-    conn = sqlite3.connect('flows.db')  # Replace 'example.db' with the path to your SQLite database file
+    conn = sqlite3.connect(FLOWS_DB)  # Replace 'example.db' with the path to your SQLite database file
     # Create a cursor object to execute SQL queries
     cursor = conn.cursor()
     cursor.execute(
@@ -63,7 +63,7 @@ def query_flows_without_drop():
     Query the flows without drop
     """
     # Connect to the SQLite database
-    conn = sqlite3.connect('flows.db')  # Replace 'example.db' with the path to your SQLite database file
+    conn = sqlite3.connect(FLOWS_DB)  # Replace 'example.db' with the path to your SQLite database file
     # Create a cursor object to execute SQL queries
     cursor = conn.cursor()
     # Execute a SELECT query
@@ -87,7 +87,7 @@ def query_flows_with_slow_rtt():
     :return:
     """
     # Connect to the SQLite database
-    conn = sqlite3.connect('flows.db')  # Replace 'example.db' with the path to your SQLite database file
+    conn = sqlite3.connect(FLOWS_DB)  # Replace 'example.db' with the path to your SQLite database file
     # Create a cursor object to execute SQL queries
     cursor = conn.cursor()
     cursor.execute(
@@ -112,7 +112,7 @@ def query_flows_with_slow_dns():
     :return:
     """
     # Connect to the SQLite database
-    conn = sqlite3.connect('flows.db')  # Replace 'example.db' with the path to your SQLite database file
+    conn = sqlite3.connect(FLOWS_DB)  # Replace 'example.db' with the path to your SQLite database file
     # Create a cursor object to execute SQL queries
     cursor = conn.cursor()
     cursor.execute(
